@@ -8,7 +8,7 @@ interface Props {
 
 const IconButton = ({ children, click }: { children: ReactNode, click: () => void }) => {
     return (
-        <button className="focus:ring-indigo-500 focus:outline-none focus:ring-2 rounded" onClick={click}>
+        <button className="focus-visible:ring-indigo-500 focus-visible:ring-2 focus-visible:outline-none rounded" onClick={click}>
             {children}
         </button>
     )
