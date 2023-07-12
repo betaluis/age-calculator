@@ -4,3 +4,26 @@
 @tailwind components; 
 @tailwind utilities; 
 
+@layer base {
+    body {
+        font-family: "Poppins", sans-serif;
+    }
+
+    .lightTheme {
+        @apply bg-zinc-100 text-zinc-900;
+    }
+
+    .darkTheme {
+        @apply bg-zinc-800 text-zinc-200;
+    }
+
+    .darkModeText {
+        @apply text-zinc-200;
+    }
+
+    .lightModeText {
+        @apply text-zinc-900;
+    }
+}
+
+

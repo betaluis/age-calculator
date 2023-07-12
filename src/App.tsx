@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useContext } from "react"
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Components
+import ThemeIcon from './components/ThemeIcon'
+import AgeInputs from './components/AgeInputs'
+import { ThemeContext } from './context/ThemeContext'
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function App() {
+
+    const { isDark, toggleTheme } = useContext(ThemeContext);
+
+    return (
+        <div className={`min-h-screen ${isDark ? "darkTheme" : "lightTheme"}`}>
+            <header className="flex justify-between items-center p-4">
+                <h1 className="font-bold text-lg">Calculate your age</h1>
+                <ThemeIcon size={40} click={toggleTheme} isDark={isDark} />
+            </header>
+            <main className="p-4">
+                <AgeInputs />
+            </main>
+        </div>
+    )
 }
 
 export default App
