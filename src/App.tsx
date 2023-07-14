@@ -1,22 +1,44 @@
-import { useContext, useState } from "react"
-import './App.css'
+import { FormEvent, useContext, useState } from "react";
+import "./App.css";
 
 // Components
-import ThemeIcon from "./components/ThemeIcon"
-import AgeInputs from "./components/AgeInputs"
-import Divider from "./components/Divider"
-import Results from "./components/Results"
+import ThemeIcon from "./components/ThemeIcon";
+import BirthdayInputs from "./components/AgeInputs";
+import Button from "./components/Button";
+import Results from "./components/Results";
 
 // Contexts
-import { ThemeContext } from './context/ThemeContext'
+import { ThemeContext } from "./context/ThemeContext";
+
+// Hooks
+import { useAge } from "./hooks/useAge";
+
+export interface BirthdayType {
+    timeFrame: string;
+    value: number | string;
+}
 
 function App() {
-
     const { isDark, toggleTheme } = useContext(ThemeContext);
 
     const themeClasses = isDark ? "darkTheme" : "lightTheme";
 
-    const [ days, setDays ] = useState<number | undefined>(undefined)
+    const [birthday, setBirthday] = useState<BirthdayType[]>([
+        { timeFrame: "day", value: "" },
+        { timeFrame: "month", value: "" },
+        { timeFrame: "year", value: "" }
+    ]);
+
+    const { age, calculateAge } = useAge(birthday);
+
+    const [showResults, setShowResults] = useState(false);
+
+
+    const handleSubmit = (e: FormEvent): void => {
+        e.preventDefault();
+        calculateAge();
+        setShowResults(true)
+    };
 
     return (
         <div className={`min-h-screen ${themeClasses}`}>
@@ -25,16 +47,16 @@ function App() {
                 <ThemeIcon size={40} click={toggleTheme} isDark={isDark} />
             </header>
             <main className="p-4">
-                <form onSubmit={() => console.log("Submitted")}>
-                    <AgeInputs />
-                    <Divider />
+                <form onSubmit={handleSubmit}>
+                    <BirthdayInputs data={birthday} setData={setBirthday} />
+                    <Button />
                 </form>
                 <div className="pt-20">
-                    <Results />
+                    {showResults && <Results age={age} />}
                 </div>
             </main>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
