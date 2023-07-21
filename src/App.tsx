@@ -82,7 +82,7 @@ function App() {
                         ${cardTheme}
                     `}>
                 <form onSubmit={handleSubmit}>
-                    <div className="sm:w-[350px]">
+                    <div className="sm:w-[380px]">
                         <BirthdayInputs 
                             setValidation={setValidationResults} 
                             validation={validationResults} 
