@@ -5,6 +5,17 @@
 @tailwind utilities; 
 
 @layer base {
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
     body {
         font-family: "Poppins", sans-serif;
     }
@@ -26,7 +37,7 @@
     }
 
     .lightModeCard {
-        @apply bg-white;
+        @apply bg-zinc-100 sm:bg-white;
     }
 
     .darkModeCard {

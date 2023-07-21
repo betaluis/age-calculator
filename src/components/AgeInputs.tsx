@@ -70,6 +70,7 @@ const Input = ({ obj, setData, isValid, setValidation, errors }: InputProps) => 
                 placeholder={placeholder}
                 className={`w-full text-3xl p-4 rounded outline outline-zinc-300 focus:outline-2 focus:outline-indigo-400 font-bold 
                     placeholder:text-gray-400 placeholder:opacity-40 placeholder:text-2xl
+                    sm:pt-3 sm:pb-3
                     ${errorClasses.outline} ${errorClasses.text}
                     ${isDark ? "outline-zinc-100 darkModeText darkModeCard" : "outline-zinc-300 lightModeCard lightModeText"} 
                 `}
