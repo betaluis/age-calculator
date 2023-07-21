@@ -77,7 +77,6 @@ export const useValidation = (birthday: BirthdayType[]) => {
             ) {
                 isValid.month.success = false;
                 isValid.month.error = "Please enter a valid month";
-                console.log("got here")
             } else if (typeof month.value !== "string" && month.value > 12) {
                 isValid.month.success = false;
                 isValid.month.error = "There are only 12 months in a year";

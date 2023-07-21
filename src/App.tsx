@@ -60,8 +60,6 @@ function App() {
 
         setValidationResults({ ...isValid })
 
-        console.log(isValid)
-
         if (isValid.isValid) {
             calculateAge();
             setShowResults(true)
