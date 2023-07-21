@@ -14,7 +14,7 @@
     }
 
     .darkTheme {
-        @apply bg-zinc-800 text-zinc-200;
+        @apply bg-zinc-800 text-zinc-200 sm:bg-zinc-900;
     }
 
     .darkModeText {
@@ -23,6 +23,14 @@
 
     .lightModeText {
         @apply text-zinc-900;
+    }
+
+    .lightModeCard {
+        @apply bg-white;
+    }
+
+    .darkModeCard {
+        @apply bg-zinc-800;
     }
 }
 

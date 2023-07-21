@@ -56,6 +56,7 @@ export const useValidation = (birthday: BirthdayType[]) => {
             if (
                 typeof year.value !== "string" && isNaN(year.value) ||
                 typeof year.value !== "string" && year.value < 0 ||
+                typeof year.value !== "string" && year.value === 0 ||
                 year.value === ""
             ) {
                 isValid.year.success = false;
@@ -73,6 +74,7 @@ export const useValidation = (birthday: BirthdayType[]) => {
             if (
                 typeof month.value !== "string" && isNaN(month.value) ||
                 typeof month.value !== "string" && month.value < 0 ||
+                typeof month.value !== "string" && month.value === 0 ||
                 month.value === ""
             ) {
                 isValid.month.success = false;
@@ -93,6 +95,7 @@ export const useValidation = (birthday: BirthdayType[]) => {
             if (
                 typeof day.value !== "string" && isNaN(day.value) || 
                 typeof day.value !== "string" && day.value < 0 ||
+                typeof day.value !== "string" && day.value === 0 ||
                 day.value === ""
             ){
                 isValid.day.success = false;
