@@ -47,7 +47,7 @@ const Input = ({ obj, setData, isValid, setValidation, errors }: InputProps) => 
         errorClasses.outline = ""
     } else if (!isValid && errors[label as keyof ErrorObjType] !== "") {
         errorClasses.text = "text-red-500"
-        errorClasses.outline = "outline-red-500"
+        errorClasses.outline = "ring-red-500"
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -68,11 +68,11 @@ const Input = ({ obj, setData, isValid, setValidation, errors }: InputProps) => 
                 value={isNaN(value) ? "" : value}
                 type="number"
                 placeholder={placeholder}
-                className={`w-full text-3xl p-4 rounded outline outline-zinc-300 focus:outline-2 focus:outline-indigo-400 font-bold 
+                className={`w-full text-3xl p-4 appearance-none rounded outline-0 ring-1 ring-zinc-300 focus:ring-2 focus:ring-indigo-400 font-bold 
                     placeholder:text-gray-400 placeholder:opacity-40 placeholder:text-2xl
                     sm:pt-3 sm:pb-3
                     ${errorClasses.outline} ${errorClasses.text}
-                    ${isDark ? "outline-zinc-100 darkModeText darkModeCard" : "outline-zinc-300 lightModeCard lightModeText"} 
+                    ${isDark ? "ring-zinc-100 darkModeText darkModeCard" : "ring-zinc-300 lightModeCard lightModeText"} 
                 `}
             />
         </label>
