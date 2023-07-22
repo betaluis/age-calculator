@@ -43,11 +43,24 @@ const Input = ({ obj, setData, isValid, setValidation, errors }: InputProps) => 
     }
 
     if (isValid === undefined && errors[label as keyof ErrorObjType] === "") {
-        errorClasses.text = ""
-        errorClasses.outline = ""
+        if (isDark) {
+            errorClasses.text = "text-zinc-300"
+            errorClasses.outline = "ring-zinc-300"
+        } else {
+            errorClasses.text = "text-zinc-800"
+            errorClasses.outline = "ring-zinc-300"
+        }
     } else if (!isValid && errors[label as keyof ErrorObjType] !== "") {
         errorClasses.text = "text-red-500"
         errorClasses.outline = "ring-red-500"
+    } else {
+        if (isDark) {
+            errorClasses.text = "text-zinc-300"
+            errorClasses.outline = "ring-zinc-300"
+        } else {
+            errorClasses.text = "text-zinc-800"
+            errorClasses.outline = "ring-zinc-300"
+        }
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -55,10 +68,13 @@ const Input = ({ obj, setData, isValid, setValidation, errors }: InputProps) => 
         setValidation((prev: ValidType) => ({ ...prev, isValid: undefined, [label]: { success: false, error: "" }}));
     };
 
+    console.log(errorClasses.text)
+    console.log(errorClasses.outline)
+
     return (
         <label className="flex flex-col space-y-2">
             <span
-                className={`uppercase text-sm font-bold ${errorClasses.text} ${isDark ? "darkModeText" : "text-zinc-900"}`}
+                className={`uppercase text-sm font-bold ${errorClasses.text} ${errorClasses.outline}`}
             >
                 {label}
             </span>
@@ -68,11 +84,12 @@ const Input = ({ obj, setData, isValid, setValidation, errors }: InputProps) => 
                 value={isNaN(value) ? "" : value}
                 type="number"
                 placeholder={placeholder}
-                className={`w-full text-3xl p-4 appearance-none rounded outline-0 ring-1 ring-zinc-300 focus:ring-2 focus:ring-indigo-400 font-bold 
+                className={`
+                    w-full text-3xl p-4 appearance-none rounded outline-0 ring-1 focus:ring-2 focus:ring-indigo-400 font-bold 
                     placeholder:text-gray-400 placeholder:opacity-40 placeholder:text-2xl
                     sm:pt-3 sm:pb-3
-                    ${errorClasses.outline} ${errorClasses.text}
-                    ${isDark ? "ring-zinc-100 darkModeText darkModeCard" : "ring-zinc-300 lightModeCard lightModeText"} 
+                    ${errorClasses.text} ${errorClasses.outline}
+                    ${isDark ? "darkModeCard" : "lightModeCard"}
                 `}
             />
         </label>
